@@ -1,0 +1,539 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    box-sizing: border-box;
+}
+
+/*  
+    Add background image and set the container div. 
+    - The goal here is a background image on a website that covers the entire browser window at all times.
+    - For centering its inside container, I used flexbox to center container both horizontally and vertically.
+*/
+
+body {
+    background: url("../images/background3.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/*
+    The container holds all objects in this page. for that I use flex display. 
+*/
+
+.container {
+    max-width: 1500px;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 100vh;
+}
+
+/*
+    The left and right side card. 
+    In this card we holds children. 
+    (for example in left card we hold the header, search bar and button.)
+    we used flex as display.
+*/
+
+.card {
+    position: absolute;
+    width: 700px;
+    display: flex;
+    min-height: 400px;
+    flex-direction: row;
+    background-color: #fff;
+    opacity: .8;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.search_card {
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+    In this selector, we changed the width of search bar. 
+*/
+
+.search_wrapper {
+    width: 300px;
+}
+
+/*
+    In this selector, we used grid layout to arrange the elements in search bar (the user icon and input field). 
+    In addition to we removed the border of input field and added a border in bottom of it.
+*/
+
+.search-div {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #c4c4c4;
+}
+
+/*
+    In this selector, we changed the color of user icon (left side of input field).. 
+*/
+
+.search-div>i {
+    color: #c4c4c4;
+}
+
+/*
+    In this selector, we set the position of all div children of search div.
+*/
+
+.search-div>div {
+    position: relative;
+}
+
+/*
+    We created a line in the bottom of search bar with #4c4177 color.
+    by default the line is deactiveate (width = 0). when we focus on the search bar, we can see the line (we set the line in .search-div:after and .search-div:before selector). 
+*/
+
+.search-div:after, .search-div:before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #4c4177;
+}
+
+/*
+    For show the bottom border of search bar.
+ */
+
+.search-div:after {
+    right: 50%;
+}
+
+.search-div:before {
+    left: 50%;
+}
+
+/* For show the bottom border of search bar. (in focus)*/
+
+.search-div.focus:after, .search-div.focus:before {
+    width: 50%;
+}
+
+/*
+    For change the color of user icon in focus mode.
+*/
+
+.search-div.focus.search-div>i {
+    color: #4c4177;
+}
+
+/*
+    Set the label of searchbar (USERNAME TEXT).
+*/
+
+.search-div__label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.2rem;
+    transition: .3s;
+}
+
+/*
+    Change location of label. (in focus mode)
+*/
+
+.search-div.focus .search-div__label {
+    top: -6px;
+    font-size: 15px;
+}
+
+/* 
+    Style for search button, we set the width by it's parent, and change the color to gradient. you can see other styles in this selector. 
+*/
+
+.search_wrapper__button {
+    display: block;
+    width: 50%;
+    height: 50px;
+    border-radius: 25px;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #774141 0%, #2a703f 74%);
+    cursor: pointer;
+    color: white;
+    background-size: 200%;
+    transition: .5s;
+    text-transform: uppercase;
+}
+
+/* 
+    For better experience (hover mode).
+*/
+
+.search_wrapper__button:hover {
+    background-position: right;
+}
+
+/*
+    Setup the search bar, we remove the border and set the width of it.
+*/
+
+.search-div__input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: none;
+    outline: none;
+    background: none;
+    padding: .5rem .7rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555;
+}
+
+/*
+    For styling the "Oh My Github text".
+*/
+
+.search_card__header {
+    font-size: 2.9rem;
+    text-transform: uppercase;
+    margin: 15px 0;
+    color: #333;
+}
+
+
+/*
+Header navbar that contains  name and radio buttons and save/submit button.
+*/
+
+.profile_card__header {
+    position: relative;
+    width: 50%;
+    height: 350px;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+Header navbar that contains prediction part and saved names .
+*/
+.profile_card_prediction {
+    position: relative;
+    width: 50%;
+    height: 350px;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+style for clear button .
+*/
+.clear_cache {
+    width: 100px;
+    height: 50px;
+    border-radius: 25px;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #416a77 0%, #2a703f 74%);
+    cursor: pointer;
+    color: white;
+    background-size: 200%;
+    transition: .5s;
+    text-transform: uppercase;
+}
+
+/*
+style for save button .
+*/
+.save_button {
+    display: block;
+    width: 50%;
+    height: 50px;
+    border-radius: 25px;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #416a77 0%, #2a703f 74%);
+    cursor: pointer;
+    color: white;
+    background-size: 200%;
+    transition: .5s;
+    text-transform: uppercase;
+}
+
+/*
+style for radio buttons .
+*/
+.radio_button {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+._radio_button {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+/* 
+    Set name of user. 
+*/
+
+.name {
+    font-size: 1.2rem;
+    color: rgb(14, 11, 11);
+    font-weight: 500;
+    line-height: 1;
+    margin: 5px 0;
+}
+
+/* 
+    Set gender percentage. 
+*/
+
+.prediction_percentage {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+/* 
+    Set gender. 
+*/
+.prediction_gender {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.saved_answers {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+/* Set id. */
+
+.id {
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    opacity: .8;
+}
+
+/* set language */
+
+.lang {
+    font-size: .9rem;
+    color: white;
+    opacity: .7;
+}
+
+/* down side of profile card, that contains the bio, follower, following, repos count, location and  the blog divs. 
+for this. we had two div. left and right, we use this selector to arrange right and left divs.*/
+
+.profile_card__content {
+    display: flex;
+    padding: 1.7rem 2.5rem 2.6rem 2.5rem;
+}
+
+/* look at .profile_card__content */
+
+.right {
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    align-items: flex-end;
+    margin-left: auto;
+}
+
+/* style of followers count, followings count and repo count */
+
+.info__number {
+    font-size: 2.1rem;
+    font-weight: 200;
+    color: #333;
+    line-height: 1.2;
+}
+
+/* style of followers label, followings label and repo label */
+
+.info__title {
+    font-size: .55rem;
+    color: #666;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: uppercase;
+}
+
+/* look at .profile_card__content */
+
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+/* style of location and blog div . by default is none. after req we set it to flex.*/
+
+.item {
+    display: none;
+    padding: .1rem 0;
+}
+
+/* icon of location and blog */
+
+.icon {
+    color: #c4c4c4;
+    text-align: center;
+    font-size: 1rem;
+    margin-right: 8px;
+    transition: .3s;
+    left: 0;
+}
+
+/* text of location and blog */
+
+.item__text {
+    font-weight: 100;
+    text-align: center;
+    font-size: .8rem;
+    left: 0;
+    color: #c4c4c4;
+    text-decoration: none;
+}
+
+/* change color when mouse enter the blog url */
+
+a.item__text:hover {
+    color: #4facfe;
+}
+
+/* Style of "Bio" text */
+
+.bio__header {
+    position: relative;
+    color: #555;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0 0 3px 0;
+    margin-bottom: .9rem;
+    display: inline-block;
+}
+
+/*
+    For adding underline of header
+*/
+
+.bio__header:after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #555;
+    bottom: 0;
+    left: 0;
+}
+
+.radio_button {
+    color: #fff;
+}
+
+/* text of user bio. */
+
+.bio__content {
+    color: #666;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    white-space: pre-line;
+}
+
+/*
+    This is the error container. 
+*/
+
+.error {
+    position: fixed;
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 10px 10px;
+    padding: 15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url("../images/error.png");
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+/* active the error message */
+
+.error.active {
+    visibility: visible;
+}
+
+/* set responsive */
+
+@media (max-width: 1300px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+    .card {
+        max-width: 400px;
+        width: 95%;
+        margin-top: 5%;
+    }
+    .fullscreen {
+        left: 0;
+        top: 0;
+    }
+    .search_card__header {
+        font-size: 2rem;
+    }
+    .search_wrapper {
+        max-width: 360px;
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile_card__content {
+        flex-direction: column;
+    }
+    .right {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .info {
+        margin: 0 5px;
+    }
+}
