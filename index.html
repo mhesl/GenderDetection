@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <title>Gender</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" type="image/png" href="./images/icons8-gender-64.png" />
+</head>
+
+<body>
+    <div class="error">
+        Replace this text with error text.
+    </div>
+
+    <div class="container">
+        <div class="profile_card card">
+            <div class="profile_card__header">
+                <h3 class="name">Mr. or Ms.</h3>
+                <h3 class="id">Name</h3>
+                <form class="search_wrapper">
+                    <div class="search-div">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <label class="search-div__label">name</label>
+                            <input type="text" class="search-div__input" required="">
+                        </div>
+                    </div>
+                    <input type="radio" class="_radio_button" id="html" name="fav_language">
+                    <label for="html">male</label><br>
+                    <input type="radio" class="radio_button" id="css" name="fav_language">
+                    <label for="html">female</label><br>
+                    <input type="submit" class="search_wrapper__button" value="Submit"></button>
+                    <input type="submit" class="save_button" value="Save"></button>
+                </form>
+                <div style="display: none;" class="lang">
+                    <i class="fas fa-code"></i>
+                    <span></span>
+                </div>
+            </div>
+            <div class="profile_card_prediction">
+                <h3 >Prediction</h3>
+                <div class="prediction_gender">gender</div>
+                <div class="prediction_percentage">%</div>
+                <h3 >Saved Answers</h3>
+                <div class="saved_answers">Nothing To Show</div>
+                <input type="submit" class="clear_cache" value="clear"></button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
