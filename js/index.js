@@ -3,8 +3,6 @@ const usernameInput = document.querySelector('.search-div__input');
 const searchButton = document.querySelector('.search_wrapper__button');
 const username = document.querySelector('.name');
 const userId = document.querySelector('.id');
-const bio = document.querySelector('.bio__content');
-const stats = document.getElementsByClassName('info__number');
 const locationDiv = document.querySelector('.location');
 const locationText = document.querySelector('.location > .item__text');
 const blogDiv = document.querySelector('.webpage');
@@ -54,7 +52,6 @@ async function getUserData(username) {
         let response = await fetch(`https://api.genderize.io/?name=${username}`)
         let json = await response.json();
         if (response.status == 200) {
-            console.log("request2323");
             return json
         }
         handleError(json);
@@ -88,7 +85,8 @@ async function sendRequest(e) {
     console.log("clicked on submit");
     let username = usernameInput.value;
     if (!validateInput()) {
-        console.log("username was empty");
+        console.log("username was invalid");
+        handleError("Invalid input")
         return;
     }
     e.preventDefault();
